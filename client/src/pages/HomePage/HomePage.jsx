@@ -1,0 +1,26 @@
+import { Link } from 'react-router-dom';
+import './HomePage.scss';
+
+const HomePage = () => {
+  return (
+    <div className="homepage">
+        {/* Add hanger/recycling flavicon */}
+        <h1>Reinvent Your Style.</h1>
+        <h2>Reinvent Your Carbon Footprint.</h2>
+        <h2>Reinvent with ReInvint.</h2>
+
+        <div className="homepage-buttons">
+            <Link to="/login">Login
+                <button className="homepage-button">Log In</button>
+            </Link>
+            <Link to="/register">Register
+                <button className="homepage-button">Register</button>
+            </Link>
+        </div>
+        <h1>Home Page</h1>
+        <Link to="/about">About</Link>
+    </div>
+  );
+}
+
+export default HomePage;
