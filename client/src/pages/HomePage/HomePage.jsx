@@ -10,14 +10,13 @@ const HomePage = () => {
         <h2>Reinvent with ReInvint.</h2>
 
         <div className="homepage-buttons">
-            <Link to="/login">Login
+            <Link to="/login">
                 <button className="homepage-button">Log In</button>
             </Link>
-            <Link to="/register">Register
-                <button className="homepage-button">Register</button>
+            <Link to="/signup">
+                <button className="homepage-button">Sign Up</button>
             </Link>
         </div>
-        <h1>Home Page</h1>
         <Link to="/about">About</Link>
     </div>
   );

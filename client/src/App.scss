@@ -1,0 +1,20 @@
+@import './styles/variables';
+@import './styles/mixins';
+
+* {
+    box-sizing: border-box;
+    font-family: 'sans-serif';
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    width: 24px;
+
+    @include tablet {
+        width: 32px;
+    }
+    @include desktop {
+        width: 40px;
+    }
+}

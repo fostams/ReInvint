@@ -1,14 +1,14 @@
-@use './global.scss' as global;
+@use './variables.scss' as variables;
 
 // Media breakpoints
 @mixin tablet {
-    @media screen and (min-width: $tablet-breakpoint) {
+    @media screen and (min-width: $tablet) {
         @content;
     }
 }
 
 @mixin desktop {
-    @media screen and (min-width: $desktop-breakpoint) {
+    @media screen and (min-width: $desktop) {
         @content;
     }
 }
