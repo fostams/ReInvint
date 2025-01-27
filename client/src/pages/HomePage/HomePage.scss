@@ -1,6 +1,6 @@
-@import '../../styles/variables.scss';
-@import '../../styles/mixins.scss';
+@use '../../styles/variables' as variables;
+@use '../../styles/mixins' as mixins;
 
 .homepage {
-    background-color: $ri-beige;
+    background-color: variables.$ri-beige;
 }
