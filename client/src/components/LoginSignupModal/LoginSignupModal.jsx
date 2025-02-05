@@ -27,10 +27,12 @@ const LoginSignupModal = ({ isLogin, setIsLogin, closeModal }) => {
 
       if (!isLoginMode) {
         setIsLoginMode(true);
+      } else if (response.data.token) {
+          sessionStorage.setItem('authToken', response.data.token);
+          closeModal();
+          navigate('/profile');
       } else {
-        sessionStorage.setItem('authToken', response.data.token);
-        closeModal();
-        navigate('/profile');
+          setErrorMessage('Authentication failed: No token received.');
       }
     } catch (error) {
       setErrorMessage('Something went wrong. Please try again.');
