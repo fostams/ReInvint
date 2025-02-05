@@ -1,0 +1,93 @@
+@use '../../styles/variables' as variables;
+@use '../../styles/mixins' as mixins;
+@use "sass:color";
+
+.profile {
+    background-color: variables.$ri-beige;
+    min-height:100vh;
+    height: auto;
+    color: variables.$ri-brown;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    font-weight: 500;
+    
+    &__info {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    &__names {
+        padding-left: 10px;
+    }
+
+    &__name {
+        font-weight: 400;
+        opacity: 80%;
+    }
+
+    &__logout {
+        @include mixins.button(variables.$ri-darkgreen, variables.$ri-beige);
+        width: 90px;
+        padding: 4px 0;
+        opacity: 50%;
+    }
+}
+
+.profile-tabs {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px 0;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  
+    &__btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        position: relative;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease-in-out;
+    
+        &:hover,
+        &.active {
+            transform: scale(1.1);
+        }
+    
+        &.active::after {
+            content: "";
+            display: block;
+            height: 3px;
+            width: 100%;
+            background: variables.$ri-darkgreen;
+            position: absolute;
+            bottom: 0px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+    }
+    
+    &__icon {
+        width: 40px;
+        height: 35px;
+        transition: transform 0.2s ease-in-out;
+    }
+  }

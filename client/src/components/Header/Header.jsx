@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import logo from '../../assets/logo/logo.png';
+import logo from '../../assets/logo/reinvint-logo-green.png';
 
 import './Header.scss';
 

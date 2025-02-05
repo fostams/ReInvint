@@ -1,0 +1,117 @@
+@use '../../styles/variables' as variables;
+@use '../../styles/mixins' as mixins;
+@use "sass:color";
+
+// Keyframes for fade-in animation
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: scale(0.9);
+  }
+  to {
+      opacity: 1;
+      transform: scale(1);
+  }
+}
+
+// Main modal wrapper (overlay)
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  
+  // Modal content box
+  &__content {
+    background: variables.$ri-beige;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  // Close button (X)
+  &__close {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: variables.$ri-brown;
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    cursor: pointer;
+    padding: 5px;
+  }
+
+  // Title
+  &__title {
+    color: variables.$ri-darkgreen;
+  }
+
+  // Error message
+  &__error {
+    color: variables.$ri-forestgreen;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+  }
+
+  // Form inputs
+  &__input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid variables.$ri-beige;
+    border-radius: 5px;
+    
+    &::placeholder {
+      color: variables.$ri-brown;
+      opacity: 0.8;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: variables.$ri-darkgreen;
+      box-shadow: 0 0 5px rgba(variables.$ri-darkgreen, 0.5);
+    }
+
+    &:not(:placeholder-shown):invalid {
+      border: 2px solid variables.$ri-darkgreen;
+      box-shadow: 0 0 5px rgba(variables.$ri-darkgreen, 0.5);
+    }
+  }
+
+  // Submit button
+  &__submit {
+    @include mixins.button(variables.$ri-darkgreen, variables.$ri-beige);
+  }
+
+  // Toggle between Login/Signup
+  &__switch {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: variables.$ri-brown;
+  }
+
+  // "Don't have an account?"
+  &__toggle {
+    background: none;
+    border: none;
+    color: variables.$ri-brown;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0;
+  }
+}

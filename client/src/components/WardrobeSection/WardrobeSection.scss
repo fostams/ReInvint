@@ -1,0 +1,147 @@
+@use '../../styles/variables' as variables;
+@use '../../styles/mixins' as mixins;
+@use "sass:color";
+
+.wardrobe-section {
+    padding: 20px;
+    background-color: variables.$ri-beige;
+    min-height: 100vh;
+    padding-bottom: 80px;
+
+    &__header {
+        text-align: center;
+        color: variables.$ri-darkgreen;
+        margin-bottom: 15px;
+    }
+
+    &__filter {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+
+        select {
+            width: 200px;
+            padding: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            background: variables.$ri-beige;
+            color: variables.$ri-darkgreen;
+            font-size: 1rem;
+            cursor: pointer;
+
+            &:hover {
+                border-color: color.adjust(variables.$ri-brown, $lightness: -10%);
+            }
+        }
+    }
+
+    &__grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    &__add-btn {
+        background: variables.$ri-darkgreen;
+        color: variables.$ri-beige;
+        border: none;
+        padding: 12px 20px;
+        font-size: 1rem;
+        cursor: pointer;
+        border-radius: 5px;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+
+        &:hover {
+            background: color.adjust(variables.$ri-darkgreen, $lightness: -10%);
+        }
+    }
+
+    &__footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: variables.$ri-beige;
+        text-align: center;
+        padding: 10px;
+
+        &__add {
+            background: none;
+            border: none;
+            cursor: pointer;
+
+            img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    }
+}
+
+/* Custom Dropdown Styling */
+.select {
+    position: relative;
+    display: flex;
+    width: 100%;
+    max-width: 250px;
+    height: 3em;
+    border-radius: 8px;
+    overflow: hidden;
+    background: variables.$ri-beige;
+    border: 2px solid variables.$ri-brown;
+
+    &:hover {
+        border-color: color.adjust(variables.$ri-brown, $lightness: -10%);
+    }
+}
+
+/* Custom Select Dropdown */
+select {
+    appearance: none;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    flex: 1;
+    padding: 0 1em;
+    color: variables.$ri-darkgreen;
+    background-color: transparent;
+    background-image: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/* Remove IE arrow */
+select::-ms-expand {
+    display: none;
+}
+
+/* Custom Arrow */
+.select::after {
+    content: '▼';  // Unicode down arrow
+    position: absolute;
+    top: 50%;
+    right: 1em;
+    transform: translateY(-50%);
+    font-size: 0.9rem;
+    color: variables.$ri-darkgreen;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.select:hover::after {
+    color: color.adjust(variables.$ri-darkgreen, $lightness: -10%);
+}
+
+/* Fix Arrow Rotation on Focus */
+.select:focus-within::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+/* Optional: Add a hover effect on select */
+select:hover {
+    background: color.adjust(variables.$ri-beige, $lightness: 5%);
+}

@@ -1,25 +1,39 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import LoginSignupModal from '../../components/LoginSignupModal/LoginSignupModal';
 import './HomePage.scss';
 
 const HomePage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
+
+  const openModal = () => {
+    setIsLogin(true);
+    setIsModalOpen(true);
+  };
+
   return (
     <div className="homepage">
-        {/* Add hanger/recycling flavicon */}
-        <h1>Reinvent Your Style.</h1>
-        <h2>Reinvent Your Carbon Footprint.</h2>
-        <h2>Reinvent with ReInvint.</h2>
-
-        <div className="homepage-buttons">
-            <Link to="/login">
-                <button className="homepage-button">Log In</button>
-            </Link>
-            <Link to="/signup">
-                <button className="homepage-button">Sign Up</button>
-            </Link>
+      <section className="hero">
+          <h1 className="hero__title">Revamp. Rewear. <i>Re</i>Invint.</h1>
+        <div className="hero__buttons">
+          <button className="hero__button" onClick={openModal}>LOG IN</button>
+          <Link to="/about">
+            <button className="hero__button">LEARN MORE</button>
+          </Link>
         </div>
-        <Link to="/about">About</Link>
+      </section>
+      
+      {/* Conditional rendering: The modal only appears when isModalOpen is true */}
+      {isModalOpen && (
+        <LoginSignupModal 
+          isLogin={isLogin}
+          setIsLogin={setIsLogin}
+          closeModal={() => setIsModalOpen(false)} 
+        />
+      )}
     </div>
   );
-}
+};
 
 export default HomePage;
